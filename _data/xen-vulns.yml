@@ -29,16 +29,16 @@
   qubes_impact: No (DoS out of scope)
 
 - advisory: 206
-  version: ? (under embargo)
-  title: 
-  priv_note: 
-  qubes_impact: 
+  version: -
+  title: (Prereleased, but embargoed)
+  priv_note: ? (under embargo)
+  qubes_impact: ? (under embargo)
 
 - advisory: 205
   version: -
-  title: N/A
+  title: Unused Xen Security Advisory number
   priv_note: N/A
-  qubes_impact: 
+  qubes_impact: N/A
 
 - advisory: 204
   version: 2
@@ -135,9 +135,9 @@
 
 - advisory: 189
   version: -
-  title: N/A
+  title: Unused Xen Security Advisory number
   priv_note: N/A
-  qubes_impact: 
+  qubes_impact: N/A
 
 - advisory: 188
   version: 3
@@ -208,7 +208,7 @@
 
 - advisory: 177
   version: -
-  title: 
+  title: Unused Xen Security Advisory number
   priv_note: 
   qubes_impact: 
 
@@ -406,13 +406,13 @@
 
 - advisory: 144
   version: -
-  title: 
+  title: Unused Xen Security Advisory number
   priv_note: 
   qubes_impact: 
 
 - advisory: 143
   version: -
-  title: 
+  title: Unused Xen Security Advisory number
   priv_note: 
   qubes_impact: 
 
@@ -778,7 +778,7 @@
 
 - advisory: 81
   version: -
-  title: 
+  title: Unused Xen Security Advisory number
   priv_note: 
   qubes_impact: 
 
@@ -790,7 +790,7 @@
 
 - advisory: 79
   version: -
-  title: 
+  title: Unused Xen Security Advisory number
   priv_note: 
   qubes_impact: 
 
