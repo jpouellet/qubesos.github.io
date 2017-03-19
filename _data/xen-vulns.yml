@@ -1,0 +1,1128 @@
+- advisory: Advisory
+  version: Version
+  title: Title
+  priv_note: priv
+  qubes_impact: Violates Qubes security model?
+  notes: Notes / general mitigation
+
+- advisory: -
+  version: -
+  title: -
+  priv_note: -
+  qubes_impact: -
+  notes: -
+
+- advisory: 211
+  version: 2
+  title: Cirrus VGA Heap overflow via display refresh
+  priv_note: guest priv => dm
+  qubes_impact: No (qemu stubdom)
+
+- advisory: 210
+  version: 1
+  title: arm: memory corruption when freeing p2m pages
+  priv_note: ARM guest => hv
+  qubes_impact: No (affects ARM only)
+
+- advisory: 209
+  version: 4
+  title: cirrus_bitblt_cputovideo does not check if memory region is safe
+  priv_note: guest priv => dm
+  qubes_impact: No (qemu stubdom)
+
+- advisory: 208
+  version: 2
+  title: oob access in cirrus bitblt copy
+  priv_note: guest priv => dm
+  qubes_impact: No (qemu stubdom)
+
+- advisory: 207
+  version: 2
+  title: memory leak when destroying guest without PT devices
+  priv_note: guest unpriv => hv DoS (intel hw only)
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 206
+  version: ? (under embargo)
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 205
+  version: -
+  title: N/A
+  priv_note: N/A
+  qubes_impact: 
+
+- advisory: 204
+  version: 2
+  title: x86: Mishandling of SYSCALL singlestep during emulation
+  priv_note: guest unpriv => guest priv
+  qubes_impact: No (guest privesc assumed in threat model)
+
+- advisory: 203
+  version: 3
+  title: x86: missing NULL pointer check in VMFUNC emulation
+  priv_note: AMD hvm => hv DoS
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 202
+  version: 3
+  title: x86 PV guests may be able to mask interrupts
+  priv_note: guest priv => hv DoS
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 201
+  version: 2
+  title: ARM guests may induce host asynchronous abort
+  priv_note: ARM guest => hv
+  qubes_impact: No (affects ARM only)
+
+- advisory: 200
+  version: 3
+  title: x86 CMPXCHG8B emulation fails to ignore operand size override
+  priv_note: guest unpriv => hv infoleak
+  qubes_impact: Likely yes – impact unclear
+
+- advisory: 199
+  version: 3
+  title: qemu ioport array overflow
+  priv_note: guest priv => dm
+  qubes_impact: No (qemu stubdom)
+
+- advisory: 198
+  version: 3
+  title: delimiter injection vulnerabilities in pygrub
+  priv_note: guest priv => dom0 file leak & deletion
+  qubes_impact: No (pygrub not used)
+
+- advisory: 197
+  version: 3
+  title: qemu incautious about shared ring processing
+  priv_note: guest priv => dm
+  qubes_impact: No (qemu stubdom)
+  notes: enforce all ring accesses go through wrapper which makes local copy to avoid TOCTOU
+
+- advisory: 196
+  version: 3
+  title: x86 software interrupt injection mis-handled
+  priv_note: some AMD guest unpriv => guest DoS
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 195
+  version: 3
+  title: x86 64-bit bit test instruction emulation broken
+  priv_note: guest unpriv => hv
+  qubes_impact: Yes – potentially devastating
+  notes: deprivileged per-guest instruction emulator (like NOVA?)
+
+- advisory: 194
+  version: 3
+  title: guest 32-bit ELF symbol table load leaking host data
+  priv_note: guest ? => hv/dom0 infoleak?
+  qubes_impact: possible infoleak? Unsure if reachable. Pvgrub should not have access to interesting hv data to leak, and hvmloader listed as not vulnerable
+  notes: bzero whole page or struct before filling?
+
+- advisory: 193
+  version: 3
+  title: x86 segment base write emulation lacking canonical address checks
+  priv_note: guest priv => hv DoS
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 192
+  version: 3
+  title: x86 task switch to VM86 mode mis-handled
+  priv_note: hvm obscure guest unpriv => guest priv (on AMD) or DoS
+  qubes_impact: No (guest privesc assumed in threat model / DoS out of scope / only affects 32-bit hvm guests / does not apply to any known guest OS)
+
+- advisory: 191
+  version: 3
+  title: x86 null segments not always treated as unusable
+  priv_note: hvm guest unpriv => guest priv
+  qubes_impact: No (guest privesc assumed in threat model)
+
+- advisory: 190
+  version: 5
+  title: CR0.TS and CR0.EM not always honored for x86 HVM guests
+  priv_note: hvm guest unpriv => guest priv
+  qubes_impact: No (guest privesc assumed in threat model)
+
+- advisory: 189
+  version: -
+  title: N/A
+  priv_note: N/A
+  qubes_impact: 
+
+- advisory: 188
+  version: 3
+  title: use after free in FIFO event channel code
+  priv_note: guest priv => hv
+  qubes_impact: Likely yes – impact unclear
+
+- advisory: 187
+  version: 3
+  title: x86 HVM: Overflow of sh_ctxt->seg_reg[]
+  priv_note: non-HAP hvm priv => hv DoS
+  qubes_impact: No (DoS out of scope) / in future: No (by requiring SLAT)
+
+- advisory: 186
+  version: 4
+  title: x86: Mishandling of instruction pointer truncation during emulation
+  priv_note: hvm guest => hv
+  qubes_impact: Yes – potentially devastating (were we using an affected version of Xen at the time?)
+  notes: deprivileged per-guest instruction emulator would be really nice
+
+- advisory: 185
+  version: 3
+  title: x86: Disallow L3 recursive pagetable for 32-bit PV guests
+  priv_note: 32-bit pv guest => hv
+  qubes_impact: Possibly (do we support 32-bit PV guests?) - might be devastating
+
+- advisory: 184
+  version: 2
+  title: virtio: unbounded memory allocation issue
+  priv_note: guest priv => dm DoS
+  qubes_impact: No (qemu stubdom / DoS out of scope / virtio unused)
+
+- advisory: 183
+  version: 5
+  title: x86: Missing SMAP whitelisting in 32-bit exception / event delivery
+  priv_note: 32-bit pv guest => hv DoS (SMAP hw only)
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 182
+  version: 3
+  title: x86: Privilege escalation in PV guests
+  priv_note: pv guest priv => hv
+  qubes_impact: Yes – definitely devastating
+
+- advisory: 181
+  version: 2
+  title: arm: Host crash caused by VMID exhaustion
+  priv_note: any guest (because can create DispVMs) => hv DoS
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 180
+  version: 1
+  title: Unrestricted qemu logging
+  priv_note: hvm guest => dom0 fs filling (DoS)
+  qubes_impact: No (DoS out of scope)
+
+- advisory: 179
+  version: 5
+  title: QEMU: Banked access to VGA memory (VBE) uses inconsistent bounds checks
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 178
+  version: 4
+  title: Unsanitised driver domain input in libxl device handling
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 177
+  version: -
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 176
+  version: 3
+  title: x86 software guest page walk PS bit handling flaw
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 175
+  version: 6
+  title: Unsanitised guest input in libxl device handling code
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 174
+  version: 3
+  title: hugetlbfs use may crash PV Linux guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 173
+  version: 3
+  title: x86 shadow pagetables: address width overflow
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 172
+  version: 3
+  title: broken AMD FPU FIP/FDP/FOP leak workaround
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 171
+  version: 4
+  title: I/O port access privilege escalation in x86-64 Linux
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 170
+  version: 3
+  title: VMX: guest user mode may crash guest with non-canonical RIP
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 169
+  version: 2
+  title: x86: unintentional logging upon guest changing callback method
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 168
+  version: 3
+  title: VMX: intercept issue with INVLPG on non-canonical address
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 167
+  version: 4
+  title: PV superpage functionality missing sanity checks
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 166
+  version: 2
+  title: ioreq handling possibly susceptible to multiple read issue
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 165
+  version: 3
+  title: information leak in legacy x86 FPU/XMM initialization
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 164
+  version: 3
+  title: qemu-dm buffer overrun in MSI-X handling
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 163
+  version: 1
+  title: virtual PMU is unsupported
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 162
+  version: 2
+  title: heap buffer overflow vulnerability in pcnet emulator
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 161
+  version: 2
+  title: WITHDRAWN: missing XSETBV intercept privilege check on AMD SVM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 160
+  version: 3
+  title: libxl leak of pv kernel and initrd on error
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 159
+  version: 4
+  title: XENMEM_exchange error handling issues
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 158
+  version: 4
+  title: long running memory operations on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 157
+  version: 3
+  title: Linux pciback missing sanity checks leading to crash
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 156
+  version: 2
+  title: x86: CPU lockup during exception delivery
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 155
+  version: 6
+  title: paravirtualized drivers incautious about shared memory contents
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 154
+  version: 3
+  title: x86: inconsistent cachability flags on guest mappings
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 153
+  version: 3
+  title: x86: populate-on-demand balloon size inaccuracy can crash guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 152
+  version: 3
+  title: x86: some pmu and profiling hypercalls log without rate limiting
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 151
+  version: 3
+  title: x86: leak of per-domain profiling-related vcpu pointer array
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 150
+  version: 5
+  title: x86: Long latency populate-on-demand operation is not preemptible
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 149
+  version: 3
+  title: leak of main per-domain vcpu pointer array
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 148
+  version: 4
+  title: x86: Uncontrolled creation of large page mappings by PV guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 147
+  version: 3
+  title: arm: Race between domain destruction and memory allocation decrease
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 146
+  version: 3
+  title: arm: various unimplemented hypercalls log without rate limiting
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 145
+  version: 3
+  title: arm: Host crash when preempting a multicall
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 144
+  version: -
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 143
+  version: -
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 142
+  version: 2
+  title: libxl fails to honour readonly flag on disks with qemu-xen
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 141
+  version: 3
+  title: printk is not rate-limited in xenmem_add_to_physmap_one
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 140
+  version: 2
+  title: QEMU leak of uninitialized heap memory in rtl8139 device model
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 139
+  version: 2
+  title: Use after free in QEMU/Xen block unplug protocol
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 138
+  version: 2
+  title: QEMU heap overflow flaw while processing certain ATAPI commands.
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 137
+  version: 3
+  title: xl command line config handling stack overflow
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 136
+  version: 3
+  title: vulnerability in the iret hypercall handler
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 135
+  version: 3
+  title: Heap overflow in QEMU PCNET controller, allowing guest->host escape
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 134
+  version: 3
+  title: GNTTABOP_swap_grant_ref operation misbehavior
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 133
+  version: 2
+  title: Privilege escalation via emulated floppy disk drive
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 132
+  version: 2
+  title: Information leak through XEN_DOMCTL_gettscinfo
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 131
+  version: 3
+  title: Unmediated PCI register access in qemu
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 130
+  version: 2
+  title: Guest triggerable qemu MSI-X pass-through error messages
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 129
+  version: 2
+  title: PCI MSI mask bits inadvertently exposed to guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 128
+  version: 2
+  title: Potential unintended writes to host MSI message data field via qemu
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 127
+  version: 2
+  title: Certain domctl operations may be abused to lock up the host
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 126
+  version: 3
+  title: Unmediated PCI command register access in qemu
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 125
+  version: 3
+  title: Long latency MMIO mapping operations are not preemptible
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 124
+  version: 2
+  title: Non-standard PCI device functionality may render pass-through insecure
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 123
+  version: 4
+  title: Hypervisor memory corruption due to x86 emulator flaw
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 122
+  version: 3
+  title: Information leak through version information hypercall
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 121
+  version: 3
+  title: Information leak via internal x86 system device emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 120
+  version: 5
+  title: Non-maskable interrupts triggerable by guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 119
+  version: 3
+  title: HVM qemu unexpectedly enabling emulated VGA graphics backends
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 118
+  version: 2
+  title: arm: vgic: incorrect rate limiting of guest triggered logging
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 117
+  version: 2
+  title: arm: vgic-v2: GICD_SGIR is not properly emulated
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 116
+  version: 3
+  title: xen crash due to use after free on hvm guest teardown
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 114
+  version: 3
+  title: p2m lock starvation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 113
+  version: 2
+  title: Guest effectable page reference leak in MMU_MACHPHYS_UPDATE handling
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 112
+  version: 5
+  title: "Insufficient bounding of ""REP MOVS"" to MMIO emulated inside the hypervisor"
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 111
+  version: 3
+  title: Excessive checking in compatibility mode hypercall argument translation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 110
+  version: 3
+  title: Missing privilege level checks in x86 emulation of far branches
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 109
+  version: 4
+  title: Insufficient restrictions on certain MMU update hypercalls
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 108
+  version: 4
+  title: Improper MSR range used for x2APIC emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 107
+  version: 2
+  title: Mishandling of uninitialised FIFO-based event channel control blocks
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 106
+  version: 3
+  title: Missing privilege level checks in x86 emulation of software interrupts
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 105
+  version: 3
+  title: Missing privilege level checks in x86 HLT, LGDT, LIDT, and LMSW emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 104
+  version: 3
+  title: Race condition in HVMOP_track_dirty_vram
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 103
+  version: 3
+  title: Flaw in handling unknown system register access from 64-bit userspace on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 102
+  version: 3
+  title: Flaws in handling traps from 32-bit userspace on 64-bit ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 101
+  version: 3
+  title: information leak via gnttab_setup_table on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 100
+  version: 3
+  title: Hypervisor heap contents leaked to guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 99
+  version: 2
+  title: unexpected pitfall in xenaccess API
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 98
+  version: 5
+  title: insufficient permissions checks accessing guest memory on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 97
+  version: 3
+  title: Long latency virtual-mmu operations are not preemptible
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 96
+  version: 3
+  title: Vulnerabilities in HVM MSI injection
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 95
+  version: 3
+  title: input handling vulnerabilities loading guest kernel on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 94
+  version: 2
+  title: ARM hypervisor crash on guest interrupt controller access
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 93
+  version: 2
+  title: Hardware features unintentionally exposed to guests on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 92
+  version: 3
+  title: HVMOP_set_mem_type allows invalid P2M entries to be created
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 91
+  version: 3
+  title: Hardware timer context is not properly context switched on ARM
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 90
+  version: 2
+  title: Linux netback crash trying to disable due to malformed packet
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 89
+  version: 3
+  title: HVMOP_set_mem_access is not preemptible
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 88
+  version: 3
+  title: use-after-free in xc_cpupool_getinfo() under memory pressure
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 87
+  version: 2
+  title: PHYSDEVOP_{prepare,release}_msix exposed to unprivileged guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 86
+  version: 3
+  title: libvchan failure handling malicious ring indexes
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 85
+  version: 3
+  title: Off-by-one error in FLASK_AVC_CACHESTAT hypercall
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 84
+  version: 3
+  title: integer overflow in several XSM/Flask hypercalls
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 83
+  version: 3
+  title: Out-of-memory condition yielding memory corruption during IRQ setup
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 82
+  version: 4
+  title: Guest triggerable AMD CPU erratum may cause host hang
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 81
+  version: -
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 80
+  version: 3
+  title: IOMMU TLB flushing may be inadvertently suppressed
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 79
+  version: -
+  title: 
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 78
+  version: 2
+  title: Insufficient TLB flushing in VT-d (iommu) code
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 77
+  version: 3
+  title: Disaggregated domain management security status
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 76
+  version: 3
+  title: Hypercalls exposed to privilege rings 1 and 2 of HVM guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 75
+  version: 2
+  title: Host crash due to guest VMX instruction execution
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 74
+  version: 3
+  title: Lock order reversal between page_alloc_lock and mm_rwlock
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 73
+  version: 3
+  title: Lock order reversal between page allocation and grant table locks
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 72
+  version: 3
+  title: ocaml xenstored mishandles oversized message replies
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 71
+  version: 2
+  title: qemu disk backend (qdisk) resource leak
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 70
+  version: 2
+  title: use-after-free in libxl_list_cpupool under memory pressure
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 69
+  version: 2
+  title: misplaced free in ocaml xc_vcpu_getaffinity stub
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 68
+  version: 2
+  title: possible null dereference when parsing vif ratelimiting info
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 67
+  version: 2
+  title: Information leak through outs instruction emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 66
+  version: 3
+  title: Information leak through fbld instruction emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 65
+  version: 2
+  title: qemu SCSI REPORT LUNS buffer overflow
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 64
+  version: 3
+  title: Memory accessible by 64-bit PV guests under live migration
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 63
+  version: 3
+  title: Information leaks through I/O instruction emulation
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 62
+  version: 2
+  title: Information leak on AVX and/or LWP capable CPUs
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 61
+  version: 2
+  title: libxl partially sets up HVM passthrough even with disabled iommu
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 60
+  version: 6
+  title: Excessive time to disable caching with HVM guests with PCI passthrough
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 59
+  version: 4
+  title: Intel VT-d Interrupt Remapping engines can be evaded by native NMI interrupts
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 58
+  version: 2
+  title: Page reference counting error due to XSA-45/CVE-2013-1918 fixes
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 57
+  version: 4
+  title: libxl allows guest write access to sensitive console related xenstore keys
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 56
+  version: 2
+  title: Buffer overflow in xencontrol Python bindings affecting xend
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 55
+  version: 5
+  title: Multiple vulnerabilities in libelf PV kernel handling
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 54
+  version: 4
+  title: Hypervisor crash due to missing exception recovery on XSETBV
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 53
+  version: 3
+  title: Hypervisor crash due to missing exception recovery on XRSTOR
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 52
+  version: 3
+  title: Information leak on XSAVE/XRSTOR capable AMD CPUs
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 51
+  version: 2
+  title: qemu guest agent (qga) insecure file permissions
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 50
+  version: 1
+  title: grant table hypercall acquire/release imbalance
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 49
+  version: 2
+  title: VT-d interrupt remapping source validation flaw for bridges
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 48
+  version: 2
+  title: qemu-nbd format-guessing due to missing format specification
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 47
+  version: 1
+  title: Potential use of freed memory in event channel operations
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 46
+  version: 3
+  title: Several access permission issues with IRQs for unprivileged guests
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 45
+  version: 2
+  title: Several long latency operations are not preemptible
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 44
+  version: 3
+  title: Xen PV DoS vulnerability with SYSENTER
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 43
+  version: 2
+  title: Linux pciback DoS via not rate limited log messages.
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 42
+  version: 2
+  title: Linux kernel hits general protection if %ds is corrupt for 32-bit PVOPS.
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 41
+  version: 2
+  title: qemu (e1000 device driver): Buffer overflow when processing large packets
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 40
+  version: 1
+  title: Linux stack corruption in xen_failsafe_callback for 32bit PVOPS guests.
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 39
+  version: 2
+  title: Linux netback DoS via malicious guest ring.
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 38
+  version: 3
+  title: oxenstored incorrect handling of certain Xenbus ring states
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 37
+  version: 1
+  title: Hypervisor crash due to incorrect ASSERT (debug build only)
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 36
+  version: 4
+  title: interrupt remap entries shared and old ones not cleared on AMD IOMMUs
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 35
+  version: 4
+  title: Nested HVM exposes host to being driven out of memory by guest
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 34
+  version: 2
+  title: nested virtualization on 32-bit exposes host crash
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 33
+  version: 3
+  title: VT-d interrupt remapping source validation flaw
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 32
+  version: 4
+  title: several hypercalls do not validate input GFNs
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 31
+  version: 3
+  title: Several memory hypercall operations allow invalid extent order values
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 30
+  version: 4
+  title: Broken error handling in guest_physmap_mark_populate_on_demand()
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 29
+  version: 3
+  title: XENMEM_exchange may overwrite hypervisor memory
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 28
+  version: 3
+  title: HVMOP_get_mem_access crash / HVMOP_set_mem_access information leak
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 27
+  version: 5
+  title: several HVM operations do not validate the range of their inputs
+  priv_note: 
+  qubes_impact: 
+
+- advisory: 26
+  version: 3
+  title: Grant table version switch list corruption vulnerability
+  priv_note: 
+  qubes_impact: 
+
