@@ -1,17 +1,3 @@
-- advisory: Advisory
-  version: Version
-  title: Title
-  priv_note: priv
-  qubes_impact: Violates Qubes security model?
-  notes: Notes / general mitigation
-
-- advisory: -
-  version: -
-  title: -
-  priv_note: -
-  qubes_impact: -
-  notes: -
-
 - advisory: 211
   version: 2
   title: Cirrus VGA Heap overflow via display refresh
